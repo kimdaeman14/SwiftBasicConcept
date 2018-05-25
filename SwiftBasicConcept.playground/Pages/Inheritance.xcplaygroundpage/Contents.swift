@@ -22,6 +22,24 @@
 
  */
 
+class Person{
+    var name : String = "찬"
+    var age : Int = 30
+}
+
+class Student : Person {
+    var grade : Int = 2
+}
+
+var student = Student()
+//학생 설계도를 가지고 인스턴스 학생을 만들어줬는데, 이상한 점은
+//학생하고 .을 찍어보니 학생의 속성인 grade 외에도 2개가 더 있다.
+//학생클래스가 사람클래스를 상속받아서 사람 클래스의 2개 속성도 사용할 수 있는 것이다.
+
+student.grade
+student.age
+student.name
+
 
 
 //: [Next](@next)
