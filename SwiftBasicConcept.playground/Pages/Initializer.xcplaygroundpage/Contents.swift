@@ -83,43 +83,86 @@ class PersonC {
         self.age = age
     }
 }
-let jenny: PersonC = PersonC(age: 10)
+
 class Puppy {
     var dogName: String = "퍼피"
-    var owner: PersonC!
+    var owner: PersonC! // 프로퍼티 owner는 PersonC type
     func goOut() {
         print("\(dogName)가 주인 \(owner.name)와 산책을 합니다")
     }
 }
-
+let jenny: PersonC = PersonC(age: 10)
 let happy: Puppy = Puppy()
 
-// 강아지는 주인없이 산책하면 안돼요!
-//happy.goOut() // 주인이 없는 상태라 오류 발생
+jenny.name //할아버지 주인
+happy.owner //nil
+
+//그니까 그런건가봐, !가 초기값 할당하기 싫을 때 하는 거잖아. 그래서 jenny.name은 분명 있는데
+//happy.owner은 없단말이지. 여기다 값을 넣고 하면 출력이 되긴 될거야. 쓰는 방법만 알아두자
 happy.owner = jenny
+//이건 신기하네,, type이 PersonC라서 var name인줄 알고 happy.owenr = "문자열"을 하면
+//타입이 안맞다고 에러가 나네. 그래서 PersonC의 인스턴스인 jenny를 넣어주니까 되네.
 happy.goOut()
-// happy가 주인 jenny와 산책을 합니다
-
-
-
-//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
 // 2-2. 실패가능한 이니셜라이저
+
+class Person3{
+    var name: String
+    var age: Int
+    
+    init?(name:String, age:Int) {
+        if (0...50).contains(age) == true { //true라면 nil값 반환 -> 0...50 사이는 안받겠다는
+            return nil
+        }
+        if name.count == 0 { // 이거는 name 값이 string이라 정상작동을 안하네 ?
+            return nil
+        }
+        self.name = name
+        self.age = age
+    }
+}
+
+var person3 = Person3(name: "1번", age: 3)
 // 이니셜라이저 매개변수로 전달되는 초기값이 잘못된 경우 인스턴스 생성에 실패할 수 있습니다.
-// 인스턴스 생성에 실패하면 nil을 반환합니다.
 // 실패가능한 이니셜라이저의 반환타입은 옵셔널 타입입니다.
-// init?을 사용합니다.
-//
+person3?.age
+type(of: person3?.age)
+person3?.name
+type(of: person3?.name)
+var person33 = Person3(name: "2번", age: 150)
+person33?.age
+person33?.name
+
+
 // 3. 디이니셜라이저(deinitializer)
-// deinit은 클래스의 인스턴스가 메모리에서 해제되는 시점에 호출됩니다.
-// 인스턴스가 해제되는 시점에 해야할 일을 구현할 수 있습니다.
-// deinit은 매개변수를 지닐 수 없습니다.
-// 자동으로 호출되므로 직접 호출할 수 없습니다.
-// 디이니셜라이저는 클래스 타입에만 구현할 수 있습니다.
-// 인스턴스가 메모리에서 해제되는 시점은 ARC(Automatic Reference Counting) 의 규칙에 따라 결정됩니다.
-// ARC에 대해 더 자세한 사항은 아래 ARC 문서를 참고하세요.
-//
-// */
+// 이거 어떻게 돌아가는지 확실히 모르겠다 나중에 다시 보자.
+
+class PersonE {
+    var name: String
+    var pet: Puppy?
+    var child: PersonC
+    
+    init(name: String, child: PersonC) {
+        self.name = name
+        self.child = child
+    }
+    // 인스턴스가 메모리에서 해제되는 시점에 자동 호출
+    deinit {
+        // deinit은 매개변수를 지닐 수 없습니다. 자동으로 호출되므로 직접 호출할 수 없습니다.
+        // 디이니셜라이저는 클래스 타입에만 구현할 수 있습니다.
+        if let petName = pet?.dogName {
+            print("\(name)가 \(child.name)에게 \(petName)를 인도합니다")
+            self.pet?.owner = child
+        }
+    }
+}
+var donald: PersonE? = PersonE(name: "donald", child: jenny)
+donald?.pet = happy
+donald = nil
+// donald 인스턴스가 더이상 필요없으므로 메모리에서 해제됩니다
+// deinit은 클래스의 인스턴스가 메모리에서 해제되는 시점에 호출
+// 왜쓰는지 ? 인스턴스가 해제되는 시점에 해야할 일을 구현할 수 있습니다.
+
 
 
 //: [Next](@next)
