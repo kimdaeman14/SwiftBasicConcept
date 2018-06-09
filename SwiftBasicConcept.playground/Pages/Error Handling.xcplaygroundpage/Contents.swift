@@ -47,5 +47,5 @@
  * 더 알아보기: 추가적으로 더 알아보면 좋은 개념입니다.
  rethrows
  defer
-
-//: [Next](@next)
+*/
+ //: [Next](@next)

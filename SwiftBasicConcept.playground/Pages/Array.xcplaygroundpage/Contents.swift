@@ -19,3 +19,4 @@ for idx in arr { //전체 꺼내쓰기, 여기서 만약에 arr을 arr.count로 
 }
 
 
+

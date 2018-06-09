@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='macos' display-mode='rendered'>
+<playground version='6.0' target-platform='macos' display-mode='raw' executeOnSourceChanges='false'>
     <pages>
         <page name='TypeInference'/>
         <page name='TypeAnnotation'/>
@@ -38,12 +38,13 @@
         <page name='Assert vs Guard'/>
         <page name='Extension'/>
         <page name='Error Handling'/>
-        <page name='Higher-order function'/>
         <page name='etc'/>
         <page name='Override'/>
         <page name='Overloading'/>
         <page name='Argument'/>
         <page name='Parameter'/>
         <page name='OOP'/>
+        <page name='High-order Functions'/>
+        <page name='for vs foreach'/>
     </pages>
 </playground>
