@@ -50,12 +50,12 @@ func update(age: Int) {
 update(age: 100)
 
 func update1(age: Int) {
-    guard 0...20 ~= age
+    guard 0...20 ~= age 
         //    , age == 100
         else { return }
     print("Pass")
 }
-update1(age: 100)
+update1(age: 19)
 
 
 //두 코드의 차이점은 코드의 복잡도와 관련이 있다. if문의 경우 age값이 0...20사이가 아닌지 확인하려면
