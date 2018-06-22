@@ -43,7 +43,7 @@ func update(age: Int) {
     }else if 10..<20 ~= age {
         print("10부터 20사이")
     }else{
-        print("둘다 아 니야.")
+        print("둘다 아니영.")
     }
 }
 
