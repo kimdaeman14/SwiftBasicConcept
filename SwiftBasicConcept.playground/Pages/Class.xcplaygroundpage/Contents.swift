@@ -23,7 +23,7 @@ class Person { //생성하는법
     }
     
     func run(){ //하는일 만들어주기
-        print("달리고 있어요")
+        print("달리고고 있어요")
     }
     
     func sleep(){
