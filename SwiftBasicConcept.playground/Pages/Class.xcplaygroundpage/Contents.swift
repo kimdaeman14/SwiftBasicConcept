@@ -33,7 +33,7 @@ class Person { //생성하는법
 }
 
 let humun = Person(name: "jongchan", age: 30, gender: "남")
-//사람 설계도로 같은 속성과 하는 일을 가지는 객체 인간을 생성
+//사람 설계도로 같은 속성과 하는 일을 가지는    객체 인간을 생성
 
 humun.run() //꺼내다쓰기
 humun.sleep()
