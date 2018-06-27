@@ -11,7 +11,7 @@
 
 
 
-class Person { //생성하는법
+class Person { //생성하   는법
     var name : String //문자열 자료형 프로퍼티 'name'  생성
     var age : Int
     var gender : String
